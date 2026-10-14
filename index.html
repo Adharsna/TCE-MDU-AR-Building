@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>TCE / MDU AR Building</title>
+
+    <!-- A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+
+    <!-- MindAR Image Tracking -->
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- Title -->
+    <div class="title">
+
+        <h1>TCE / MDU AR Building</h1>
+
+        <p>
+            Point your camera at the reference image
+        </p>
+
+    </div>
+
+
+    <!-- AR Scene -->
+
+    <a-scene
+        mindar-image="imageTargetSrc: ./assets/targets.mind; maxTrack: 1;"
+        color-space="sRGB"
+        renderer="colorManagement: true, physicallyCorrectLights"
+        vr-mode-ui="enabled: false"
+        device-orientation-permission-ui="enabled: false">
+
+
+        <!-- 3D Assets -->
+
+        <a-assets>
+
+            <a-asset-item
+                id="buildingModel"
+                src="./assets/building.glb">
+            </a-asset-item>
+
+        </a-assets>
+
+
+        <!-- MindAR Target -->
+
+        <a-entity
+            mindar-image-target="targetIndex: 0">
+
+
+            <!-- Blender 3D Model -->
+
+            <a-gltf-model
+                src="#buildingModel"
+                position="0 0 0"
+                rotation="0 0 0"
+                scale="0.1 0.1 0.1">
+            </a-gltf-model>
+
+
+        </a-entity>
+
+
+        <!-- Camera -->
+
+        <a-camera
+            position="0 0 0"
+            look-controls="enabled: false">
+        </a-camera>
+
+
+    </a-scene>
+
+
+    <!-- Bottom instruction -->
+
+    <div class="instructions">
+
+        <p>
+            📱 Move your camera slowly over the TCE / MDU image
+        </p>
+
+    </div>
+
+
+</body>
+
+</html>
